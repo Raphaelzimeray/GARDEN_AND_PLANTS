@@ -18,4 +18,11 @@
       <% end %>
     </div>
   </div>
+  <div class="create-a-plant">
+    <%= simple_form_for [@garden, @plant] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file  %>
+    <%= f.button :submit %>
+  <% end %>
+  </div>
 </div>
