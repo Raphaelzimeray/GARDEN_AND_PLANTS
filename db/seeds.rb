@@ -13,7 +13,9 @@ puts "Cleaning database"
 
 Garden.destroy_all
 
-puts "creating 2 new gardens.."
+Plant.destroy_all
+
+puts "creating 2 new gardens..with their plants"
 
 jardin_des_plantes = Garden.new(
   name: "Jardin des plantes"
@@ -23,7 +25,13 @@ file = URI.open('https://upload.wikimedia.org/wikipedia/commons/4/48/Paris_75005
 jardin_des_plantes.photo.attach(io: file, filename: '75005_Grande_Galerie/jpg', content_type: '75005_Grande_Galerie.jpg')
 jardin_des_plantes.save!
 
+orchidée = Plant.new(name: "Orchidée", garden_id: jardin_des_plantes.id)
+file = URI.open('https://www.cmonjardinier.com/wp-content/uploads/2019/06/planter-rempoter-arroser-orchidee.png')
+orchidée.photo.attach(io: file, filename: 'Orchidee/png', content_type: 'Orchidee.png')
+orchidée.save!
+
 puts "#{jardin_des_plantes.name} has been created!"
+puts "#{orchidée.name} has been created!"
 
 jardin_des_tuileries = Garden.new(
   name: "Jardin des Tuileries"
